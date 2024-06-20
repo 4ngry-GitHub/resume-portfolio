@@ -1,30 +1,38 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+	<div class="dark:bg-dark bg-light flex flex-col h-screen overflow-hidden">
+		<!-- <NavBar v-if="showNavBar" /> -->
+		<main class="flex-1 overflow-y-scroll">
+      <h1 class="text-red-600">Test</h1>
+			<router-view></router-view>
+		</main>
+		<!-- <FooterBar /> -->
+	</div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<script>
+// import NavBar from '@/components/NavBar.vue';
+// import FooterBar from '@/components/FooterBar.vue';
+
+export default {
+	name: 'App',
+	// components: { NavBar, FooterBar },
+	// computed: {
+	// 	showNavBar() {
+	// 		const excludedRoutes = ['login', 'register', 'error'];
+	// 		const routeNames = this.$router.options.routes.map(route => route.name);
+	// 		const filteredRouteNames = routeNames.filter(name => !excludedRoutes.includes(name));
+	// 		return filteredRouteNames.includes(this.$route.name);
+	// 	},
+	// },
+};
+</script>
+
+<style>
+#app {
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
 }
 </style>
