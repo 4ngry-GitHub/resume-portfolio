@@ -1,21 +1,21 @@
-# Admin Panel
+# Coffee Shop
 
 ## Project setup
 
 ```
-npm install
+npm install --save
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve:dev
+npm run dev
 ```
 
 ### Compiles and minifies for production
 
 ```
-npm run build:prod
+npm run build
 ```
 
 ### Run your unit tests
