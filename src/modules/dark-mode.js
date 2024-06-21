@@ -51,7 +51,7 @@ const HSThemeAppearance = {
 	},
 };
 HSThemeAppearance.init();
-// eslint-disable-next-line
+
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
 	if (HSThemeAppearance.getOriginalAppearance() === 'auto') {
 		HSThemeAppearance.setAppearance('auto', false);
