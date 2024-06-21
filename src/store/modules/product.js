@@ -91,8 +91,9 @@ export const useProductStore = defineStore('productStore', {
 				toast.warning('Помилка. Кошик вже порожній.');
 				return;
 			}
+
 			window.localStorage.setItem('product-cart', JSON.stringify([]));
 			toast.success('Кошик очищено успішно.');
-		}
+		},
 	},
 });
