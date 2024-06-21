@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import HomeView from '@/views/general/HomeView.vue';
 import AboutView from '@/views/general/AboutView.vue';
+import ProductView from '@/views/product/ProductView.vue';
 
 // const toast = useToast();
 import { IStaticMethods } from 'preline/preline';
@@ -25,6 +26,14 @@ const router = createRouter({
 			component: AboutView,
 			meta: {
 				title: 'About',
+			},
+		},
+		{
+			path: '/products',
+			name: 'products',
+			component: ProductView,
+			meta: {
+				title: 'Products',
 			},
 		},
 		{ path: '/:catchAll(.*)', redirect: '/', name: 'undefined' },

@@ -1,11 +1,20 @@
+import './modules/dark-mode';
 import { createApp } from 'vue';
-import router from './router';
-import 'preline/preline';
 import './index.css';
-import Toast from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
+import 'preline/preline';
+
 import App from './App.vue';
 
+// router
+import router from './router';
+
+// pinia data store
+import { createPinia } from 'pinia';
+const pinia = createPinia();
+
+// toasts
+import Toast from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
 const toastOptions = {
 	position: 'top-center',
 	timeout: 4990,
@@ -20,14 +29,12 @@ const toastOptions = {
 	icon: true,
 	rtl: false,
 	transition: 'Vue-Toastification__slideBlurred',
-	filterBeforeCreate: (toast, toasts) => {
-		if (toasts.filter(t => t.type === toast.type).length !== 0) {
-			// Returning false discards the toast
-			return false;
-		}
-		// You can modify the toast if you want
-		return toast;
-	},
+	// filterBeforeCreate: (toast, toasts) => {
+	// 	if (toasts.filter(t => t.type === toast.type).length !== 0) {
+	// 		return false;
+	// 	}
+	// 	return toast;
+	// },
 };
 
-createApp(App).use(router).use(Toast, toastOptions).mount('#app');
+createApp(App).use(router).use(pinia).use(Toast, toastOptions).mount('#app');

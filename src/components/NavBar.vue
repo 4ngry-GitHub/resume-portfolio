@@ -62,6 +62,11 @@
 						class="font-medium text-brand-gray hover:text-gray-500 dark:text-gray-200 dark:hover:text-white sm:py-6"
 						>About</router-link
 					>
+					<router-link
+						to="/products"
+						class="font-medium text-brand-gray hover:text-gray-500 dark:text-gray-200 dark:hover:text-white sm:py-6"
+						>Products</router-link
+					>
 					<button
 						type="button"
 						class="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"

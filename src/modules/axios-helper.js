@@ -24,23 +24,7 @@ axios.interceptors.response.use(
 	function (error) {
 		if (!error.response) {
 			toast.error('Network error');
-			router.push({ name: 'error' });
-			return Promise.reject(error);
-		}
-
-		if (error.response.status === 401) {
-			localStorage.removeItem('token');
-			router.push({ name: 'login' });
-			return Promise.reject(error);
-		}
-
-		if (error.response.status === 404) {
-			const routesToCheck = ['/lunches', '/images', '/messages'];
-			const currentRoute = router.currentRoute.value.path;
-			if (currentRoute && !routesToCheck.includes(currentRoute)) {
-				router.push({ name: 'error' });
-				return Promise.reject(error);
-			}
+			// router.push({ name: 'error' });
 			return Promise.reject(error);
 		}
 
