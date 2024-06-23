@@ -78,7 +78,7 @@ export const useProductStore = defineStore('productStore', {
 			const productCart = this.getCart();
 
 			if (productCart.filter(p => p.id === product.id).length !== 0) {
-				toast.warning('Помилка. Товар вже в кошику.');
+				toast.warning('Товар вже в кошику.');
 				return;
 			}
 

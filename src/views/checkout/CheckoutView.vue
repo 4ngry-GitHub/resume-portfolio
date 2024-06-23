@@ -1,7 +1,7 @@
 <template>
 	<section class="bg-neutral-200 py-8 antialiased dark:bg-zinc-700 md:py-16 h-screen">
 		<div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Кошик</h2>
+			<h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Кошик</h1>
 
 			<div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
 				<div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
@@ -103,6 +103,11 @@
 						</div>
 						<!-- end cart -->
 					</div>
+					<a
+						@click="clearCart"
+						class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-zinc-700 dark:text-neutral-200 border-2 border-zinc-700 dark:border-neutral-200 hover:animate-pulse hover:cursor-pointer"
+						>{{ cart.length > 0 ? 'Очистити кошик' : 'Кошик порожній' }}</a
+					>
 				</div>
 
 				<div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -153,38 +158,55 @@
 
 <script>
 import { useToast } from 'vue-toastification';
+import { ref, computed } from 'vue';
 import { useProductStore } from '@/store/modules/product.js';
 import productPlaceholder from '@/assets/product-placeholder.jpg';
 
 export default {
 	name: 'CheckoutView',
-	data() {
+	setup() {
+		const store = useProductStore();
+		const cart = ref(store.getCart());
+		const total = ref(store.getTotal());
+
+		const updateCartAndTotal = () => {
+			cart.value = store.getCart();
+			total.value = store.getTotal();
+		};
+
+		const increaseQuantity = product => {
+			store.increaseQuantity(product);
+			updateCartAndTotal();
+		};
+
+		const decreaseQuantity = product => {
+			store.decreaseQuantity(product);
+			updateCartAndTotal();
+		};
+
+		const removeFromCart = product => {
+			store.removeFromCart(product);
+			updateCartAndTotal();
+		};
+
+		const clearCart = () => {
+			if (store.getCart().length > 0 && confirm('Ви впевнені, що хочете очистити кошик?')) {
+				store.clearCart();
+				updateCartAndTotal();
+			}
+		};
+
 		return {
 			defaultProductImage: productPlaceholder,
+			cart,
+			total,
+			increaseQuantity,
+			decreaseQuantity,
+			removeFromCart,
+			clearCart,
 		};
 	},
-	computed: {
-		cart() {
-			return this.store.getCart();
-		},
-		total() {
-			return this.store.getTotal();
-		},
-	},
-	methods: {
-		increaseQuantity(product) {
-			this.store.increaseQuantity(product);
-		},
-		decreaseQuantity(product) {
-			this.store.decreaseQuantity(product);
-		},
-		removeFromCart(product) {
-			this.store.removeFromCart(product);
-		},
-	},
 	created() {
-		this.store = useProductStore();
-		// this.cart = this.store.getCart();
 		this.toast = useToast();
 	},
 };
