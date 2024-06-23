@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full dark:bg-zinc-900 bg-light text-sm py-3 sm:py-0">
+		class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full dark:bg-neutral-800 bg-light text-sm py-3 sm:py-0">
 		<nav
 			class="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
 			aria-label="Global">
@@ -91,7 +91,7 @@
 					</a>
 					<button
 						type="button"
-						class="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+						class="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-indigo-500"
 						data-hs-theme-click-value="dark">
 						<svg
 							class="flex-shrink-0 w-4 h-4"
@@ -109,7 +109,7 @@
 					</button>
 					<button
 						type="button"
-						class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+						class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-indigo-500 font-medium dark:text-gray-400 dark:hover:text-indigo-500"
 						data-hs-theme-click-value="light">
 						<svg
 							class="flex-shrink-0 w-4 h-4"
@@ -153,6 +153,6 @@ export default {
 
 <style>
 #navbar-collapse-with-animation .router-link-exact-active {
-	@apply text-brand-steel transition-colors duration-300;
+	@apply text-indigo-500 transition-colors duration-300;
 }
 </style>
