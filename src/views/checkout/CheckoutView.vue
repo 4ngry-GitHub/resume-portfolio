@@ -1,7 +1,7 @@
 <template>
 	<section class="bg-neutral-200 py-8 antialiased dark:bg-zinc-700 md:py-16 h-screen">
 		<div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Shopping Cart</h2>
+			<h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Кошик</h2>
 
 			<div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
 				<div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
@@ -95,7 +95,7 @@
 													stroke-width="2"
 													d="M6 18 17.94 6M18 18 6.06 6" />
 											</svg>
-											Remove
+											Видалити
 										</button>
 									</div>
 								</div>
@@ -108,27 +108,27 @@
 				<div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
 					<div
 						class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-						<p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
+						<p class="text-xl font-semibold text-gray-900 dark:text-white">Результат замовлення</p>
 
 						<div class="space-y-4">
 							<dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-								<dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
+								<dt class="text-base font-bold text-gray-900 dark:text-white">До сплати</dt>
 								<dd class="text-base font-bold text-gray-900 dark:text-white">₴{{ total }}</dd>
 							</dl>
 						</div>
 
 						<a
 							class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-green-800 dark:text-green-500 border-green-800 dark:border-green-500 border-2 hover:cursor-pointer hover:shadow-lg hover:shadow-green-100 dark:hover:shadow-green-800"
-							>Proceed to Checkout</a
+							>Сплатити</a
 						>
 
 						<div class="flex items-center justify-center gap-2">
-							<span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
+							<span class="text-sm font-normal text-gray-500 dark:text-gray-400"> або </span>
 							<a
 								href="/product"
 								title=""
 								class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500 text-indigo-500">
-								Continue Shopping
+								Продовжити покупки
 								<svg
 									class="h-5 w-5"
 									aria-hidden="true"
@@ -171,7 +171,7 @@ export default {
 		// },
 		total() {
 			this.totalSum = 0;
-			
+
 			for (const product of this.cart) {
 				this.totalSum += this.getProductTotal(product);
 			}
