@@ -53,20 +53,42 @@
 				<div
 					class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:ps-7">
 					<router-link
-						to="/"
+						:to="{ name: 'home' }"
 						class="font-medium text-brand-gray hover:text-gray-500 dark:text-gray-200 dark:hover:text-white sm:py-6"
-						>Home</router-link
+						>Головна</router-link
 					>
 					<router-link
-						to="/about"
+						:to="{ name: 'category' }"
 						class="font-medium text-brand-gray hover:text-gray-500 dark:text-gray-200 dark:hover:text-white sm:py-6"
-						>About</router-link
+						>Категорї</router-link
 					>
 					<router-link
-						to="/products"
+						:to="{ name: 'product' }"
 						class="font-medium text-brand-gray hover:text-gray-500 dark:text-gray-200 dark:hover:text-white sm:py-6"
-						>Products</router-link
+						>Усi товари</router-link
 					>
+					<router-link
+						:to="{ name: 'contacts' }"
+						class="font-medium text-brand-gray hover:text-gray-500 dark:text-gray-200 dark:hover:text-white sm:py-6"
+						>Контакти</router-link
+					>
+					<a
+						class="flex items-center gap-x-2 font-medium text-brand-gray hover:text-gray-500 dark:text-white/[.8] dark:hover:text-white sm:border-s sm:border-white/[.3] sm:my-6 sm:ps-6"
+						href="/checkout">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="h-7 w-7">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+						</svg>
+						Кошик
+					</a>
 					<button
 						type="button"
 						class="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
@@ -112,23 +134,6 @@
 							<path d="m19.07 4.93-1.41 1.41" />
 						</svg>
 					</button>
-
-					<a
-						class="flex items-center gap-x-2 font-medium text-brand-gray hover:text-gray-500 dark:text-white/[.8] dark:hover:text-white sm:border-s sm:border-white/[.3] sm:my-6 sm:ps-6"
-						:href="discordLink">
-						<svg
-							class="h-7 w-7"
-							fill="currentColor"
-							viewbox="0 0 24 24"
-							style="color: #7289da"
-							xmlns="http://www.w3.org/2000/svg"
-							fill-rule="evenodd"
-							clip-rule="evenodd">
-							<path
-								d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.28-1.452-1.344-1.536-1.428.636 2.22h-13.608c-1.356 0-2.46-1.104-2.46-2.472v-16.224c0-1.368 1.104-2.472 2.46-2.472h16.08zm-4.632 15.672c2.652-.084 3.672-1.824 3.672-1.824 0-3.864-1.728-6.996-1.728-6.996-1.728-1.296-3.372-1.26-3.372-1.26l-.168.192c2.04.624 2.988 1.524 2.988 1.524-1.248-.684-2.472-1.02-3.612-1.152-.864-.096-1.692-.072-2.424.024l-.204.024c-.42.036-1.44.192-2.724.756-.444.204-.708.348-.708.348s.996-.948 3.156-1.572l-.12-.144s-1.644-.036-3.372 1.26c0 0-1.728 3.132-1.728 6.996 0 0 1.008 1.74 3.66 1.824 0 0 .444-.54.804-.996-1.524-.456-2.1-1.416-2.1-1.416l.336.204.048.036.047.027.014.006.047.027c.3.168.6.3.876.408.492.192 1.08.384 1.764.516.9.168 1.956.228 3.108.012.564-.096 1.14-.264 1.74-.516.42-.156.888-.384 1.38-.708 0 0-.6.984-2.172 1.428.36.456.792.972.792.972zm-5.58-5.604c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332.012-.732-.54-1.332-1.224-1.332zm4.38 0c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332 0-.732-.54-1.332-1.224-1.332z" />
-						</svg>
-						Join
-					</a>
 				</div>
 			</div>
 		</nav>
@@ -141,7 +146,6 @@ export default {
 	data() {
 		return {
 			showMobileMenu: false,
-			discordLink: 'https://discord.gg/JEjVS7fzzQ',
 		};
 	},
 };

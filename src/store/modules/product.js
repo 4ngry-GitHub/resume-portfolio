@@ -50,6 +50,23 @@ export const useProductStore = defineStore('productStore', {
 				console.error('GET_PRODUCT error:', error);
 			}
 		},
+
+		async GET_PRODUCT_PAGE(page = 1, size = 10) {
+			try {
+				const response = await axios.get(settings.backEndUrl + '/product/page', null, { params: { page, size } });
+
+				if (response.status === 200) {
+					this.productPage = response.data;
+					return this.productPage;
+				} else {
+					toast.error(`Error: ${response.data.error}`);
+				}
+			} catch (error) {
+				toast.error('Помилка! Спробуйте пізніше.');
+				console.error('GET_PRODUCT_PAGE error:', error);
+			}
+		},
+
 		getCart() {
 			if (!window.localStorage.getItem('product-cart')) {
 				window.localStorage.setItem('product-cart', JSON.stringify([]));
@@ -86,14 +103,18 @@ export const useProductStore = defineStore('productStore', {
 			toast.success('Товар видалено з кошика.');
 		},
 
-		clearCart() {
+		clearCart(sendToast = true) {
 			if (this.getCart().length === 0) {
-				toast.warning('Помилка. Кошик вже порожній.');
+				if (sendToast) {
+					toast.warning('Помилка. Кошик вже порожній.');
+				}
 				return;
 			}
 
 			window.localStorage.setItem('product-cart', JSON.stringify([]));
-			toast.success('Кошик очищено успішно.');
+			if (sendToast) {
+				toast.success('Кошик очищено успішно.');
+			}
 		},
 	},
 });

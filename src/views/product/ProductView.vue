@@ -7,7 +7,7 @@
 			:key="index"
 			class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
 			<a href="#">
-				<img :src="product.imageUrl || defaultImage" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+				<img :src="product.image || defaultImage" alt="Product" :class="['h-80 w-72 object-cover rounded-t-xl', { 'grayscale brightness-50 transition duration-500 ease-in-out': !product.is_active }]" />
 				<div class="px-4 py-3 w-72">
 					<span class="text-gray-400 mr-3 uppercase text-xs">Арт. {{ product.article }}</span>
 					<p class="text-lg font-bold text-black truncate block capitalize">{{ product.title }}</p>
@@ -67,10 +67,14 @@ export default {
 		products() {
 			return this.store.getProducts;
 		},
+		page() {
+			return this.store.getPage;
+		}
 	},
 	created() {
 		this.store = useProductStore();
 		this.store.GET_PRODUCTS();
+		this.store.GET_PRODUCT_PAGE();
 	},
 };
 </script>

@@ -3,8 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 // import { useToast } from 'vue-toastification';
 
 import HomeView from '@/views/general/HomeView.vue';
-import AboutView from '@/views/general/AboutView.vue';
+import ContactsView from '@/views/general/ContactsView.vue';
 import ProductView from '@/views/product/ProductView.vue';
+import CategoryView from '@/views/category/CategoryView.vue';
+import CheckoutView from '@/views/checkout/CheckoutView.vue';
 
 // const toast = useToast();
 import { IStaticMethods } from 'preline/preline';
@@ -21,19 +23,35 @@ const router = createRouter({
 			},
 		},
 		{
-			path: '/about',
-			name: 'about',
-			component: AboutView,
+			path: '/contacts',
+			name: 'contacts',
+			component: ContactsView,
 			meta: {
-				title: 'About',
+				title: 'Contacts',
 			},
 		},
 		{
-			path: '/products',
-			name: 'products',
+			path: '/category',
+			name: 'category',
+			component: CategoryView,
+			meta: {
+				title: 'Category',
+			},
+		},
+		{
+			path: '/product',
+			name: 'product',
 			component: ProductView,
 			meta: {
-				title: 'Products',
+				title: 'Product',
+			},
+		},
+		{
+			path: '/checkout',
+			name: 'checkout',
+			component: CheckoutView,
+			meta: {
+				title: 'Checkout',
 			},
 		},
 		{ path: '/:catchAll(.*)', redirect: '/', name: 'undefined' },

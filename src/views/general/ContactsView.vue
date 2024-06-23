@@ -1,10 +1,10 @@
 <template>
-	<h1>About Page {{ key }}</h1>
+	<h1>Contacts Page {{ key }}</h1>
 </template>
 
 <script>
 export default {
-	name: 'AboutView',
+	name: 'ContactsView',
 	setup() {
 		return {key: "value"};
 	},
