@@ -1,5 +1,5 @@
 <template>
-	<section class="bg-neutral-200 py-8 antialiased dark:bg-zinc-700 md:py-16 h-screen">
+	<section class="bg-neutral-200 py-8 antialiased dark:bg-zinc-700 md:py-16 min-h-screen">
 		<div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
 			<h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Кошик</h1>
 
@@ -7,6 +7,9 @@
 				<div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
 					<div class="space-y-6">
 						<!-- start cart -->
+						<div v-if="cart.length === 0">
+							<p class="text-lg font-medium text-gray-600 dark:text-gray-300">Кошик порожній.</p>
+						</div>
 						<div
 							v-for="product in cart"
 							:key="product.id"
@@ -103,11 +106,6 @@
 						</div>
 						<!-- end cart -->
 					</div>
-					<a
-						@click="clearCart"
-						class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-zinc-700 dark:text-neutral-200 border-2 border-zinc-700 dark:border-neutral-200 hover:animate-pulse hover:cursor-pointer"
-						>{{ cart.length > 0 ? 'Очистити кошик' : 'Кошик порожній' }}</a
-					>
 				</div>
 
 				<div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -149,6 +147,12 @@
 								</svg>
 							</a>
 						</div>
+						<a
+							v-if="cart.length > 0"
+							@click="clearCart"
+							class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-zinc-700 dark:text-neutral-200 border-2 border-zinc-700 dark:border-neutral-200 hover:animate-pulse hover:cursor-pointer"
+							>Очистити кошик</a
+						>
 					</div>
 				</div>
 			</div>
