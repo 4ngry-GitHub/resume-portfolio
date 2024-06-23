@@ -71,7 +71,6 @@ export const useProductStore = defineStore('productStore', {
 			if (!window.localStorage.getItem('product-cart')) {
 				window.localStorage.setItem('product-cart', JSON.stringify([]));
 			}
-			console.log(JSON.parse(window.localStorage.getItem('product-cart')));
 			return JSON.parse(window.localStorage.getItem('product-cart'));
 		},
 
@@ -83,7 +82,18 @@ export const useProductStore = defineStore('productStore', {
 				return;
 			}
 
-			productCart.push(product);
+			if (!product.is_active) {
+				toast.warning('Помилка. Товар недоступний.');
+				return;
+			}
+
+			productCart.push({
+				id: product.id,
+				quantity: 1,
+				title: product.title,
+				image: product.image,
+				price: product.price,
+			});
 			window.localStorage.setItem('product-cart', JSON.stringify(productCart));
 			toast.success('Товар додано до кошика.');
 

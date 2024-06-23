@@ -25,7 +25,7 @@
 								</p>
 								<p v-else class="text-md font-light text-black cursor-auto my-3">Немає в наявності.</p>
 							</div>
-							<div class="ml-auto">
+							<div class="ml-auto" @click="addProductToCart(product)">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="20"
