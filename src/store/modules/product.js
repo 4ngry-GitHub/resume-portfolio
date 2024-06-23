@@ -37,7 +37,8 @@ export const useProductStore = defineStore('productStore', {
 
 		async GET_PRODUCT(productId) {
 			try {
-				const response = await axios.get(settings.backEndUrl + `/product/${productId}`);
+				const parsedProductId = parseInt(productId);
+				const response = await axios.get(settings.backEndUrl + `/product/${parsedProductId}`);
 
 				if (response.status === 200) {
 					this.product = response.data.data;
@@ -74,11 +75,13 @@ export const useProductStore = defineStore('productStore', {
 			return JSON.parse(window.localStorage.getItem('product-cart'));
 		},
 
-		addToCart(product) {
+		addToCart(product, notify = true) {
 			const productCart = this.getCart();
 
 			if (productCart.filter(p => p.id === product.id).length !== 0) {
-				toast.warning('Товар вже в кошику.');
+				if (notify) {
+					toast.warning('Товар вже в кошику.');
+				}
 				return;
 			}
 
@@ -95,7 +98,10 @@ export const useProductStore = defineStore('productStore', {
 				price: product.price,
 			});
 			window.localStorage.setItem('product-cart', JSON.stringify(productCart));
-			toast.success('Товар додано до кошика.');
+
+			if (notify) {
+				toast.success('Товар додано до кошика.');
+			}
 
 			return;
 		},

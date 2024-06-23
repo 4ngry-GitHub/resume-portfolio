@@ -74,7 +74,7 @@
 								</div>
 
 								<div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-									<a href="#" class="text-base font-medium text-gray-900 hover:underline dark:text-white">{{
+									<a :href="`/product/${product.id}`" class="text-base truncate block font-medium text-gray-900 hover:underline dark:text-white">{{
 										product.title
 									}}</a>
 

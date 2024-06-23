@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/general/HomeView.vue';
 import ContactsView from '@/views/general/ContactsView.vue';
 import ProductView from '@/views/product/ProductView.vue';
+import ProductDetailView from '@/views/product/ProductDetailView.vue'
 import CategoryView from '@/views/category/CategoryView.vue';
 import CheckoutView from '@/views/checkout/CheckoutView.vue';
 
@@ -44,6 +45,14 @@ const router = createRouter({
 			component: ProductView,
 			meta: {
 				title: 'Product',
+			},
+		},
+		{
+			path: '/product/:id',
+			name: 'product-detail',
+			component: ProductDetailView,
+			meta: {
+				title: 'Product detail',
 			},
 		},
 		{

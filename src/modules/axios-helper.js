@@ -23,7 +23,7 @@ axios.interceptors.response.use(
 	},
 	function (error) {
 		if (!error.response) {
-			toast.error('Network error');
+			toast.error('Помилка мережi. Спробуйте пізніше.');
 			// router.push({ name: 'error' });
 			return Promise.reject(error);
 		}
