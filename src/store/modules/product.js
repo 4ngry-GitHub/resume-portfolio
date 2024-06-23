@@ -126,5 +126,48 @@ export const useProductStore = defineStore('productStore', {
 				toast.success('Кошик очищено успішно.');
 			}
 		},
+		increaseQuantity(product) {
+			const productCart = this.getCart();
+			if (productCart.filter(p => p.id === product.id).length === 0) {
+				toast.warning('Помилка. Товар не знайдено.');
+				return;
+			}
+
+			for (const item of productCart) {
+				if (item.id === product.id) {
+					item.quantity++;
+				}
+			}
+
+			window.localStorage.setItem('product-cart', JSON.stringify(productCart));
+		},
+		decreaseQuantity(product) {
+			const productCart = this.getCart();
+			if (productCart.filter(p => p.id === product.id).length === 0) {
+				toast.warning('Помилка. Товар не знайдено.');
+				return;
+			}
+
+			if (productCart.find(i => i.id === product.id).quantity == 1) {
+				toast.warning('Скористайтеся кнопкую "Видалити з кошика".');
+				return;
+			}
+
+			for (const item of productCart) {
+				if (item.id === product.id) {
+					item.quantity--;
+				}
+			}
+
+			window.localStorage.setItem('product-cart', JSON.stringify(productCart));
+		},
+		getTotal() {
+			const productCart = this.getCart();
+			let total = 0;
+			for (const item of productCart) {
+				total += item.price * item.quantity;
+			}
+			return total / 100;
+		},
 	},
 });

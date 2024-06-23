@@ -95,7 +95,7 @@
 													stroke-width="2"
 													d="M6 18 17.94 6M18 18 6.06 6" />
 											</svg>
-											Видалити
+											Видалити з кошика
 										</button>
 									</div>
 								</div>
@@ -160,47 +160,31 @@ export default {
 	name: 'CheckoutView',
 	data() {
 		return {
-			totalSum: 0,
-			cart: null,
 			defaultProductImage: productPlaceholder,
 		};
 	},
 	computed: {
-		// cart() {
-		// 	return this.store.getCart();
-		// },
+		cart() {
+			return this.store.getCart();
+		},
 		total() {
-			this.totalSum = 0;
-
-			for (const product of this.cart) {
-				this.totalSum += this.getProductTotal(product);
-			}
-			return this.totalSum;
+			return this.store.getTotal();
 		},
 	},
 	methods: {
 		increaseQuantity(product) {
-			product.quantity++;
-			// add to store
+			this.store.increaseQuantity(product);
 		},
 		decreaseQuantity(product) {
-			if (product.quantity === 1) {
-				this.toast.warning('Скористайтеся кнопкую "Видалити з кошика".');
-				return;
-			}
-			product.quantity--;
-			// add to store
+			this.store.decreaseQuantity(product);
 		},
 		removeFromCart(product) {
 			this.store.removeFromCart(product);
 		},
-		getProductTotal(product) {
-			return (product.price * product.quantity) / 100;
-		},
 	},
 	created() {
 		this.store = useProductStore();
-		this.cart = this.store.getCart();
+		// this.cart = this.store.getCart();
 		this.toast = useToast();
 	},
 };
