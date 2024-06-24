@@ -1,65 +1,52 @@
 <template>
-	<footer class="bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white w-full mt-auto static">
-		<div class="w-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-800">
-			<div class="md:w-2/3 w-full px-4 text-white flex flex-col">
-				<div class="flex mt-2 flex-col md:flex-row md:justify-between">
-					<p class="w-full md:w-2/3 text-gray-800 text-base dark:text-gray-200">
+	<div v-if="showModal">
+		<FeedbackModal @close-feedback-modal="toggleModal" />
+	</div>
+
+	<footer class="bg-neutral-100 dark:bg-neutral-800">
+		<div class="container px-6 py-6 mx-auto">
+			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-y-4 lg:grid-cols-2 items-center">
+				<div class="flex justify-center lg:justify-start">
+					<h3 class="max-w-lg text-m font-normal tracking-tight text-gray-800 dark:text-white">
 						Якщо ви хочете отримувати більше інформації про наш сайт або товари та послуги, будь ласка, зв’яжіться з
 						нами.
-					</p>
-					<div class="w-44 pt-6 md:pt-0">
-						<a class="bg-indigo-500 justify-center text-center rounded-lg shadow px-10 py-3 flex items-center"
-							>Зворотній зв’язок</a
-						>
-					</div>
+					</h3>
 				</div>
-				<div class="flex flex-col">
-					<div class="flex mt-2 mb-2 flex-row justify-between">
-						<div class=""></div>
-						<a
-							href="/"
-							class="hidden md:block cursor-pointer text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500 uppercase"
-							>Головна</a
-						>
-						<a
-							href="/contacts"
-							class="hidden md:block cursor-pointer text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500 uppercase"
-							>Контакти</a
-						>
-						<a
-							href="/category"
-							class="hidden md:block cursor-pointer text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500 uppercase"
-							>Категорії</a
-						>
-						<a
-							href="/product"
-							class="hidden md:block cursor-pointer text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-500 uppercase"
-							>Товари</a
-						>
-						<div class="flex flex-row space-x-8 items-center justify-between"></div>
-					</div>
-					<hr class="border-gray-600" />
-					<p class="w-full text-center my-2 text-gray-600 dark:text-gray-200">Copyright © {{ year }} Ice Coffee</p>
+				<div class="flex justify-center lg:justify-end">
+					<button
+						@click="toggleModal"
+						class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform lg:w-auto focus:outline-none bg-gray-700 rounded-lg hover:bg-indigo-500 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+						Зворотній зв’язок
+					</button>
 				</div>
+			</div>
+
+			<hr class="my-2 border-gray-200 md:my-2 dark:border-gray-700" />
+
+			<div class="flex items-center justify-center">
+				<p class="text-neutral-800 dark:text-gray-400 flex mx-2">Copyright © {{ year }} Ice Coffee</p>
 			</div>
 		</div>
 	</footer>
 </template>
 
 <script>
+import FeedbackModal from '@/components/FeedbackModal.vue';
+
 export default {
 	name: 'Footer',
+	components: {
+		FeedbackModal,
+	},
 	data() {
 		return {
 			year: new Date().getFullYear(),
-			showModel: false,
-      phoneNumber: null,
-      message: null,
+			showModal: false,
 		};
 	},
 	methods: {
 		toggleModal() {
-			this.showModel = !this.showModel;
+			this.showModal = !this.showModal;
 		},
 	},
 };

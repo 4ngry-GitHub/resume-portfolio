@@ -161,7 +161,6 @@
 </template>
 
 <script>
-import { useToast } from 'vue-toastification';
 import { ref, computed } from 'vue';
 import { useProductStore } from '@/store/modules/product.js';
 import productPlaceholder from '@/assets/product-placeholder.jpg';
@@ -209,9 +208,6 @@ export default {
 			removeFromCart,
 			clearCart,
 		};
-	},
-	created() {
-		this.toast = useToast();
 	},
 };
 </script>

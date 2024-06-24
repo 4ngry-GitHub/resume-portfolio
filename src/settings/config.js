@@ -1,6 +1,8 @@
 const config = {
-	feedbackMinLength: 10,
-	feedbackMaxLength: 200,
+	feedbackMessageMinLength: 5,
+	feedbackMessageMaxLength: 256,
+	phoneNumberLength: 13,
+	phoneNumberRawLength: 9,
 };
 
 export default config;
