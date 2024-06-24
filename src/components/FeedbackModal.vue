@@ -27,7 +27,7 @@
 				<form @submit.prevent="processFeedback" class="p-4 md:p-5">
 					<div class="grid gap-4 mb-4 grid-cols-2">
 						<div class="col-span-2">
-							<label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+							<label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Номер телефону</label
 							>
 							<input
@@ -38,7 +38,7 @@
 								placeholder="+(380)"
 								class="bg-gray-50 border border-gray-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-zinc-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 								type="text" />
-							<label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+							<label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Ваше повiдомлення</label
 							>
 							<input
@@ -108,7 +108,7 @@ export default {
 				}
 			} catch (error) {
 				this.toast.error('Помилка! Спробуйте пізніше.');
-				console.error('GET_PRODUCT_PAGE error:', error);
+				console.error('sendFeedback error:', error);
 			}
 		},
 		validateFeedBack(payload) {

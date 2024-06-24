@@ -1,4 +1,8 @@
 <template>
+	<div v-show="showModal">
+		<CheckoutModal @close-checkout-modal="toggleModal" />
+	</div>
+
 	<section class="bg-neutral-200 py-8 antialiased dark:bg-zinc-700 md:py-16 min-h-screen">
 		<div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
 			<h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Кошик</h1>
@@ -74,9 +78,11 @@
 								</div>
 
 								<div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-									<a :href="`/product/${product.id}`" class="text-base truncate block font-medium text-gray-900 hover:underline dark:text-white">{{
-										product.title
-									}}</a>
+									<a
+										:href="`/product/${product.id}`"
+										class="text-base truncate block font-medium text-gray-900 hover:underline dark:text-white"
+										>{{ product.title }}</a
+									>
 
 									<div class="flex items-center gap-4">
 										<button
@@ -121,6 +127,7 @@
 						</div>
 
 						<a
+							@click="toggleModal"
 							class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-green-800 dark:text-green-500 border-green-800 dark:border-green-500 border-2 hover:cursor-pointer hover:shadow-lg hover:shadow-green-100 dark:hover:shadow-green-800"
 							>Сплатити</a
 						>
@@ -164,13 +171,18 @@
 import { ref, computed } from 'vue';
 import { useProductStore } from '@/store/modules/product.js';
 import productPlaceholder from '@/assets/product-placeholder.jpg';
+import CheckoutModal from '@/components/CheckoutModal.vue';
 
 export default {
 	name: 'CheckoutView',
+	components: {
+		CheckoutModal,
+	},
 	setup() {
 		const store = useProductStore();
 		const cart = ref(store.getCart());
 		const total = ref(store.getTotal());
+		const showModal = ref(false);
 
 		const updateCartAndTotal = () => {
 			cart.value = store.getCart();
@@ -199,14 +211,24 @@ export default {
 			}
 		};
 
+		const toggleModal = () => {
+			if (cart.value.length === 0) {
+				return;
+			}
+			showModal.value = !showModal.value;
+		};
+
 		return {
 			defaultProductImage: productPlaceholder,
 			cart,
 			total,
+			showModal,
 			increaseQuantity,
 			decreaseQuantity,
 			removeFromCart,
 			clearCart,
+			toggleModal,
+			CheckoutModal,
 		};
 	},
 };
