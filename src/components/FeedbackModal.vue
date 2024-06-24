@@ -93,21 +93,52 @@ export default {
 		closeModal() {
 			this.$emit('close-feedback-modal');
 		},
-		sendFeedback(payload) {
-			// TODO: implement
-			this.closeModal();
+		validatePhoneNumber() {
+			return this.cfg.phoneNumberPattern.test(this.phoneNumber);
 		},
-		validateFeedBack() {
+		async sendFeedback(payload) {
+			try {
+				const response = await axios.post(settings.backEndUrl + '/feedback', payload);
+
+				if (response.status === 200) {
+					this.toast.success("Ваш відгук надіслано. Наш менеджер зв'яжеться з вами найближчим часом");
+					this.closeModal();
+				} else {
+					toast.error('Помилка! Спробуйте пізніше.');
+				}
+			} catch (error) {
+				this.toast.error('Помилка! Спробуйте пізніше.');
+				console.error('GET_PRODUCT_PAGE error:', error);
+			}
+		},
+		validateFeedBack(payload) {
+			if (!this.validatePhoneNumber(payload.phone_number)) {
+				this.toast.error('Некоректний номер телефону. Введіть в форматі +380XXXXXXXXX');
+                this.phoneNumber = '';
+				return false;
+			}
+
+			if (
+				payload.message.length < this.cfg.feedbackMessageMinLength ||
+				payload.message.length > this.cfg.feedbackMessageMaxLength
+			) {
+				this.toast.error(
+					`Довжина повідомлення має бути від ${this.cfg.feedbackMessageMinLength} до ${this.cfg.feedbackMessageMaxLength} символів`,
+				);
+                this.message = '';
+				return false;
+			}
+
 			return true;
 		},
-		processFeedback() {
+		async processFeedback() {
 			const payload = {
 				phone_number: this.phoneNumber,
 				message: this.message,
 			};
 
-			if (this.validateFeedBack()) {
-				this.sendFeedback(payload);
+			if (this.validateFeedBack(payload)) {
+				await this.sendFeedback(payload);
 			}
 		},
 	},
