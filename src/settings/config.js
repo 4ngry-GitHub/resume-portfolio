@@ -9,6 +9,7 @@ const config = {
 	orderNoteMaxLength: 256,
 	deliveryAddressMaxLength: 256,
 	deliveryAddressMinLength: 3,
+	categoryMaxDescriptionLength: 256,
 };
 
 export default config;

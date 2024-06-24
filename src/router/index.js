@@ -7,6 +7,7 @@ import ContactsView from '@/views/general/ContactsView.vue';
 import ProductView from '@/views/product/ProductView.vue';
 import ProductDetailView from '@/views/product/ProductDetailView.vue'
 import CategoryView from '@/views/category/CategoryView.vue';
+import CategoryDetailView from '@/views/category/CategoryDetailView.vue';
 import CheckoutView from '@/views/checkout/CheckoutView.vue';
 
 // const toast = useToast();
@@ -37,6 +38,14 @@ const router = createRouter({
 			component: CategoryView,
 			meta: {
 				title: 'Category',
+			},
+		},
+		{
+			path: '/category/:id',
+			name: 'category-detail',
+			component: CategoryDetailView,
+			meta: {
+				title: 'Category detail',
 			},
 		},
 		{
