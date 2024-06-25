@@ -98,7 +98,7 @@ export default {
 		},
 		async sendFeedback(payload) {
 			try {
-				const response = await axios.post(settings.backEndUrl + '/feedback', payload);
+				const response = await axios.post(settings.backEndUrl + '/feedback/', payload);
 
 				if (response.status === 200) {
 					this.toast.success("Ваш відгук надіслано. Наш менеджер зв'яжеться з вами найближчим часом");
