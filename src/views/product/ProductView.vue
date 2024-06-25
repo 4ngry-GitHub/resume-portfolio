@@ -6,7 +6,7 @@
 			<div
 				v-for="(product, index) in products"
 				:key="index"
-				class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+				class="w-72 bg-white shadow-md rounded-xl h-fit duration-500 hover:scale-105 hover:shadow-xl">
 				<router-link :to="{ name: 'product-detail', params: { id: product.id } }">
 					<img
 						:src="product.image || defaultImage"
