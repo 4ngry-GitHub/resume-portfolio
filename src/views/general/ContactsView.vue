@@ -10,7 +10,7 @@
 							Ice Kava
 						</p>
 						<p class="mt-4 text-xl text-gray-800 dark:text-gray-200">
-							Ми працюємо тільки в межах міста Києва. Доставка відбувається в межах міста Києва.
+							Ми працюємо тільки в межах міста Києва. Доставка в інші міста за допомогою пошти.
 						</p>
 					</div>
 
@@ -37,7 +37,6 @@
 									<dt class="text-lg leading-6 font-medium text-indigo-500">Адреса</dt>
 									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">
 										м. Київ<br />
-										вул. Львівська, 11
 									</dd>
 								</div>
 							</div>
@@ -84,7 +83,7 @@
 								</div>
 								<div class="ml-4">
 									<dt class="text-lg leading-6 font-medium text-indigo-500">Електронна пошта</dt>
-									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">golovanwork1205@gmail.com</dd>
+									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">icekavagarage@gmail.com</dd>
 								</div>
 							</div>
 
