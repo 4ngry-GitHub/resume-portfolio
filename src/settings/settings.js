@@ -1,8 +1,8 @@
 const settings = {
-	backEndUrl: 'http://localhost:8000',
+	backEndUrl: 'https://coffee-shop-backend.up.railway.app',
 	host: '127.0.0.1',
 	port: 3000,
-	debug: true,
+	debug: false,
 };
 
 export default settings;
