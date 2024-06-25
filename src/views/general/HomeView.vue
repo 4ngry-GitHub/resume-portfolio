@@ -78,7 +78,7 @@ export default {
 				},
 				{
 					title: 'Атмосфера',
-					image: null,
+					image: https://cdn.discordapp.com/attachments/800490036092076113/827389073462919178/unknown.png?ex=667c385f&is=667ae6df&hm=46b6827cb2cea6397eb793b65ca7221cc4f12af34233249b73caa7e7f210a4d5&,
 					description:
 						'Наша кав`ярня створює затишну та дружню атмосферу, де можна не тільки смакувати каву, але й відпочивати та насолоджуватись кожною хвилиною.',
 				},
