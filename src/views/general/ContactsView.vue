@@ -61,7 +61,7 @@
 								</div>
 								<div class="ml-4">
 									<dt class="text-lg leading-6 font-medium text-indigo-500">Номер телефону</dt>
-									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">+38(0123)-456-78-90</dd>
+									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">+380 93 545 30 74</dd>
 								</div>
 							</div>
 
@@ -84,7 +84,7 @@
 								</div>
 								<div class="ml-4">
 									<dt class="text-lg leading-6 font-medium text-indigo-500">Електронна пошта</dt>
-									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">vertigo_gay@gmail.com</dd>
+									<dd class="mt-2 text-base text-gray-800 dark:text-gray-200">golovanwork1205@gmail.com</dd>
 								</div>
 							</div>
 
