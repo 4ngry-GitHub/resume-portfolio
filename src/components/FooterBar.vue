@@ -24,7 +24,7 @@
 			<hr class="my-2 border-gray-200 md:my-2 dark:border-gray-700" />
 
 			<div class="flex items-center justify-center">
-				<p class="text-neutral-800 dark:text-gray-400 flex mx-2">Copyright © {{ year }} Ice Coffee</p>
+				<p class="text-neutral-800 dark:text-gray-400 flex mx-2">Copyright © {{ year }} Ice Kava</p>
 			</div>
 		</div>
 	</footer>

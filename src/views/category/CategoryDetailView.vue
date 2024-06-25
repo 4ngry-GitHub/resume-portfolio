@@ -13,7 +13,7 @@
 			<div
 				v-for="(product, index) in products"
 				:key="index"
-				class="w-full max-w-sm bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl max-h-[500px] flex flex-col">
+				class="w-full max-w-sm bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl max-h-[500px] h-fit flex flex-col">
 				<router-link :to="{ name: 'product-detail', params: { id: product.id } }">
 					<img
 						:src="product.image || defaultImage"

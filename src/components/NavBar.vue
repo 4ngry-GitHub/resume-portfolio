@@ -5,8 +5,8 @@
 			class="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
 			aria-label="Global">
 			<div class="flex items-center justify-between">
-				<router-link to="/" class="flex-none text-3xl font-semibold text-brand-steel" aria-label="Ice Coffee">
-					<img class="w-16 sm:w-24" src="@/assets/ice-coffee-logo.png" alt="Ice Coffee logo" />
+				<router-link to="/" class="flex-none text-3xl font-semibold text-brand-steel" aria-label="Ice Kava">
+					<img class="w-16 sm:w-24" src="@/assets/ice-coffee-logo.png" alt="Ice Kava logo" />
 				</router-link>
 				<div class="sm:hidden">
 					<button

@@ -7,7 +7,7 @@
 					<div class="text-center lg:text-left">
 						<h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Контакти</h2>
 						<p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-black dark:text-white sm:text-4xl">
-							Ice Coffee
+							Ice Kava
 						</p>
 						<p class="mt-4 text-xl text-gray-800 dark:text-gray-200">
 							Ми працюємо тільки в межах міста Києва. Доставка відбувається в межах міста Києва.

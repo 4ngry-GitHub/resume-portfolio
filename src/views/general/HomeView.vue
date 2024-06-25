@@ -60,7 +60,7 @@ export default {
 	name: 'HomeView',
 	data() {
 		return {
-			projectName: 'Ice Coffee',
+			projectName: 'Ice Kava',
 			headerImage: headerImagePlaceholder,
 			address: 'Kyiv Hreshiatyk st. 24',
 			servicesCards: [
