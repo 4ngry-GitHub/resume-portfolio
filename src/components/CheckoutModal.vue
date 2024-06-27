@@ -80,8 +80,9 @@
 								required
 								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
 								<option value="credit-card">Оплата карткою</option>
-								<option value="cash-on-receiving">Післяплата</option>
-								<option value="courier-delivery">Доставка кур'єром</option>
+								<option value="cash-on-receiving">Оплата готівкою</option>
+								<option value="courier-card">Оплата карткою курь'єру</option>
+								<option value="courier-cash">Оплата готівкою курь'єру</option>
 							</select>
 							<label for="postal-service" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Поштовий сервіс</label
@@ -93,7 +94,7 @@
 								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
 								<option value="nova-poshta">Нова Пошта</option>
 								<option value="ukr-poshta">Укр Пошта</option>
-								<option value="self-pickup">Самовивiз</option>
+								<option value="self-pickup">Адресна доставка</option>
 							</select>
 						</div>
 					</div>
