@@ -27,6 +27,7 @@
 				<form @submit.prevent="processCheckout" class="p-4 md:p-5">
 					<div class="grid gap-4 mb-4 grid-cols-2">
 						<div class="col-span-2">
+							<!-- credentials -->
 							<label for="credentials" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Iм'я та прізвище</label
 							>
@@ -38,6 +39,7 @@
 								placeholder="Iм'я та прізвище"
 								class="bg-gray-50 border border-gray-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-zinc-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 								type="text" />
+							<!-- phone number -->
 							<label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Номер телефону</label
 							>
@@ -49,6 +51,20 @@
 								placeholder="+(380)"
 								class="bg-gray-50 border border-gray-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-zinc-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 								type="text" />
+							<!-- postal service -->
+							<label for="postal-service" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+								>Поштовий сервіс</label
+							>
+							<select
+								id="category"
+								v-model="postalService"
+								required
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+								<option value="nova-poshta">Нова Пошта</option>
+								<option value="ukr-poshta">Укр Пошта</option>
+								<option value="self-pickup">Самовивiз</option>
+							</select>
+							<!-- delivery address -->
 							<label for="delivery-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Адреса доставки та номер відділення</label
 							>
@@ -60,6 +76,20 @@
 								required
 								class="bg-gray-50 border border-gray-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-zinc-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 								type="text" />
+							<!-- postal method -->
+							<label for="postal-method" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+								>Спосіб оплати</label
+							>
+							<select
+								id="category"
+								v-model="postalMethod"
+								required
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+								<option value="credit-card">Оплата карткою</option>
+								<option value="cash-on-receiving">Післяплата</option>
+								<option value="courier-delivery">Доставка курь'єром</option>
+							</select>
+							<!-- order note -->
 							<label for="note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 								>Коментар до замовлення</label
 							>
@@ -70,33 +100,7 @@
 								class="bg-gray-50 border border-gray-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-zinc-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 								type="text" />
 						</div>
-						<div class="col-span-2 sm:col-span-1">
-							<label for="postal-method" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-								>Спосіб оплати</label
-							>
-							<select
-								id="category"
-								v-model="postalMethod"
-								required
-								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-								<option value="credit-card">Оплата карткою</option>
-								<option value="cash-on-receiving">Оплата готівкою</option>
-								<option value="courier-card">Оплата карткою курь'єру</option>
-								<option value="courier-cash">Оплата готівкою курь'єру</option>
-							</select>
-							<label for="postal-service" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-								>Поштовий сервіс</label
-							>
-							<select
-								id="category"
-								v-model="postalService"
-								required
-								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-								<option value="nova-poshta">Нова Пошта</option>
-								<option value="ukr-poshta">Укр Пошта</option>
-								<option value="self-pickup">Адресна доставка</option>
-							</select>
-						</div>
+						<!-- <div class="col-span-2 sm:col-span-1"></div> -->
 					</div>
 					<button
 						type="submit"
