@@ -1,5 +1,5 @@
 <template>
-	<!-- hero seciton -->
+	<!-- header -->
 	<div class="relative w-full h-[320px]" id="home">
 		<div class="absolute inset-0 opacity-90">
 			<img :src="headerImage" alt="..." class="object-cover object-center w-full h-full" />
@@ -12,16 +12,17 @@
 		</div>
 	</div>
 
-	<section class="py-10 bg-neutral-200 dark:bg-zinc-700" id="services">
+	<!-- showcase -->
+	<section v-if="showcase" class="py-10 bg-neutral-200 dark:bg-zinc-700" id="services">
 		<div class="container mx-auto px-4">
 			<h2 class="text-3xl font-bold mb-8 text-center text-black dark:text-white">Нашi послуги</h2>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-				<div v-for="service in servicesCards" :key="service.id">
-					<div class="bg-white rounded-lg shadow-md overflow-hidden">
-						<img :src="service.image" :alt="service.title" class="w-full h-64 object-cover" />
+				<div v-for="item in showcase" :key="item">
+					<div @click="redirectTo(item.url)" class="bg-white rounded-lg shadow-md overflow-hidden h-full hover:scale-105 hover:shadow-xl">
+						<img :src="item.image || showcaseImage" alt="..." class="w-full h-64 object-cover" />
 						<div class="p-6 text-center">
-							<h3 class="text-xl font-medium text-gray-800 mb-2">{{ service.title }}</h3>
-							<p class="text-gray-700 text-base">{{ service.description }}</p>
+							<h3 class="text-xl font-medium text-gray-800 mb-2">{{ item.title }}</h3>
+							<p class="text-gray-700 text-base">{{ item.text }}</p>
 						</div>
 					</div>
 				</div>
@@ -56,52 +57,34 @@
 <script>
 import headerImagePlaceholder from '@/assets/home-header.jpg';
 
+import { useHomeStore } from '@/store/index.js';
+
 export default {
 	name: 'HomeView',
+	computed: {
+		showcase() {
+			return this.store.showcase;
+		},
+	},
 	data() {
 		return {
 			projectName: 'Ice Kava',
 			headerImage: headerImagePlaceholder,
+			showcaseImage: headerImagePlaceholder,
 			address: 'Kyiv Hreshiatyk st. 24',
-			servicesCards: [
-				{
-					title: 'Якість кави',
-					image: 'https://plus.unsplash.com/premium_photo-1681169148821-59891bb8c78e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-					description:
-						'Наша кава відзначається високою якістю зерен та витонченим смаком, який не залишить байдужим жодного шанувальника кави.',
-				},
-				{
-					title: 'Команда бариста',
-					image: 'https://plus.unsplash.com/premium_photo-1673261160611-b060865138c3?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-					description:
-						'Ми маємо професійну команду бариста, яка любить свою роботу і завжди готова дарувати найсмачніший кавовий досвід нашим клієнтам.',
-				},
-				{
-					title: 'Атмосфера',
-					image: 'https://cdn.discordapp.com/attachments/800490036092076113/827389073462919178/unknown.png?ex=667c385f&is=667ae6df&hm=46b6827cb2cea6397eb793b65ca7221cc4f12af34233249b73caa7e7f210a4d5&',
-					description:
-						'Наша кав`ярня створює затишну та дружню атмосферу, де можна не тільки смакувати каву, але й відпочивати та насолоджуватись кожною хвилиною.',
-				},
-				{
-					title: 'Вибір напоїв',
-					image: null,
-					description:
-						'Ми пропонуємо широкий вибір кавових напоїв, від класичних до авторських рецептів, що вразять навіть найвибагливіших гурманів.',
-				},
-				{
-					title: 'Клієнтозадоволення',
-					image: null,
-					description:
-						'Ми завжди ставимо на перше місце задоволення наших клієнтів, гарантуючи найкращу обслуговування та кавовий досвід на вищому рівні.',
-				},
-				{
-					title: 'Повага до кожного клієнта',
-					image: null,
-					description:
-						'Ваше задоволення - наш пріоритет. Ми прагнемо зробити кожен візит у нашу кав`ярню особливим, забезпечуючи вам незабутні враження та високий рівень обслуговування.',
-				},
-			],
 		};
+	},
+	methods: {
+		redirectTo(url) {
+			if (!url) {
+				return;
+			}
+			window.location.href = url;
+		},
+	},
+	created() {
+		this.store = useHomeStore();
+		this.store.GET_SHOWCASE();
 	},
 };
 </script>
