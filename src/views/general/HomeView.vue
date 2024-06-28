@@ -15,10 +15,13 @@
 	<!-- showcase -->
 	<section v-if="showcase" class="py-10 bg-neutral-200 dark:bg-zinc-700" id="services">
 		<div class="container mx-auto px-4">
-			<h2 class="text-3xl font-bold mb-8 text-center text-black dark:text-white">Нашi послуги</h2>
+			<h2 class="text-3xl font-bold mb-8 text-center text-black dark:text-white">Вітрина</h2>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 				<div v-for="item in showcase" :key="item">
-					<div @click="redirectTo(item.url)" class="bg-white rounded-lg shadow-md overflow-hidden h-full hover:scale-105 hover:shadow-xl" :class="{ 'cursor-pointer': item.url }">
+					<div
+						@click="redirectTo(item.url)"
+						class="bg-white rounded-lg shadow-md overflow-hidden h-full hover:scale-105 hover:shadow-xl"
+						:class="{ 'cursor-pointer': item.url }">
 						<img :src="item.image || showcaseImage" alt="..." class="w-full h-64 object-cover" />
 						<div class="p-6 text-center">
 							<h3 class="text-xl font-medium text-gray-800 mb-2">{{ item.title }}</h3>
