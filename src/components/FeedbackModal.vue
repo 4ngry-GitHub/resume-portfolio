@@ -114,7 +114,7 @@ export default {
 		validateFeedBack(payload) {
 			if (!this.validatePhoneNumber(payload.phone_number)) {
 				this.toast.error('Некоректний номер телефону. Введіть в форматі +380XXXXXXXXX');
-                this.phoneNumber = '';
+				this.phoneNumber = '';
 				return false;
 			}
 
@@ -125,9 +125,33 @@ export default {
 				this.toast.error(
 					`Довжина повідомлення має бути від ${this.cfg.feedbackMessageMinLength} до ${this.cfg.feedbackMessageMaxLength} символів`,
 				);
-                this.message = '';
+				this.message = '';
 				return false;
 			}
+
+			return true;
+		},
+		rateLimit() {
+			if (!window.localStorage.getItem('feedback-rate-limit')) {
+				const currentTime = new Date();
+				// allowed once per 15 minutes
+				const feedbackRateLimit = { allowed_at: new Date(currentTime.getTime() + 15 * 60000) };
+				window.localStorage.setItem('feedback-rate-limit', JSON.stringify(feedbackRateLimit));
+				return true;
+			}
+
+			const feedbackRateLimit = JSON.parse(window.localStorage.getItem('feedback-rate-limit'));
+			const allowedAt = new Date(feedbackRateLimit.allowed_at);
+			const currentTime = new Date();
+
+			if (currentTime.getTime() < allowedAt.getTime()) {
+				this.toast.error('Спробуйте пізніше. Ви можете надіслати повідомлення кожні 15 хвилин');
+				return false;
+			}
+			
+			// creating new time delta
+			const newFeedbackRateLimit = { allowed_at: new Date(currentTime.getTime() + 15 * 60000) };
+			window.localStorage.setItem('feedback-rate-limit', JSON.stringify(newFeedbackRateLimit));
 
 			return true;
 		},
@@ -136,6 +160,10 @@ export default {
 				phone_number: this.phoneNumber,
 				message: this.message,
 			};
+
+			if (!this.rateLimit()) {
+				return;
+			}
 
 			if (this.validateFeedBack(payload)) {
 				await this.sendFeedback(payload);
